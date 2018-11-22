@@ -1,0 +1,8 @@
+- for (var i = blog.length -1; i >= 0; i--)
+	-if(blog[i].summary != null)  if(blog[i].summary.length > 50) text = blog[i].summary.substring(0,50) + '...'; else text = blog[i].summary
+	console.log(text)
+		div#tBlogPost(style="background-image: url("+blog[i].image+");background-position: left 35%; cursor: pointer;" onclick="$.get('/"+type+"/blog', {file: '"+blog[i].htmlfile+"'}).done(function(res) {$('#"+type+"Blog.content').append(res)});")
+			h2#tTitle= blog[i].title
+			p#tDate= blog[i].date
+			p#tText= text
+			

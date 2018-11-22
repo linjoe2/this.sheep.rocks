@@ -1,0 +1,95 @@
+doctype html
+html
+	head
+		link(rel='stylesheet', type='text/css', href='css/style.css')
+		#fb-root
+		script.
+			(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = 'https://connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.11';
+			fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+
+	body
+		#header
+			#header1
+				#now
+					!= now
+			#header2
+				#menu
+					ul
+						li
+							a#mapMenu() Map
+						li
+							a#travelMenu() Travel
+						li
+							img#logo(src='img/logo.svg')
+						li
+							a#techMenu() Tech
+						li
+							a#nowMenu() Now
+		#map
+		#travel
+			h1#hTitel Seeing is knowing
+			div#tBlogPost.travel
+
+		#travelBlog
+			a.exit(href='#') X
+			#travelBlog.content 
+
+
+		#tech
+			h1#hTitel tic tac tech
+			div#tBlogPost.tech
+
+		#techBlog
+			a.exit(href='#') X
+			#techBlog.content 
+	
+		// google script
+		script.
+			var locations = !{JSON.stringify(maplocations)}
+			function initMap() {
+				// Styles a map in night mode.
+				var map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 45.925733, lng: 0.186730},
+				zoom: 5,
+				disableDefaultUI: true,
+				clickableIcons: false,
+				styles: !{JSON.stringify(maps)}
+				});
+
+				for(var i = 0; i < locations.length; i++) {
+					var marker = new google.maps.Marker({
+						position: getLatLngFromString(locations[i].location),
+						map: map,
+						animation: google.maps.Animation.DROP,
+						title: locations[i].title,
+						icon: "img/van_icon.png",
+						url: locations[i].htmlfile
+					});
+					google.maps.event.addListener(marker, 'click', function() {
+						$.get('/travel/blog', {file: this.url}).done(function(res) {$('#travelBlog.content').append(res)});
+						$("#travelBlog.content").show("slide", { direction: "down"}, 10);
+						$("#travelBlog").show("slide", {direction: "down"}, 400);;
+						});
+				}
+
+			}
+			function getLatLngFromString(ll) {
+				var latlng = ll.split(/, ?/)
+				return new google.maps.LatLng(parseFloat(latlng[0]), parseFloat(latlng[1])); 
+			}
+		// apikey
+		script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyByDwc6RG_52eGmAa4fldx0EfliFIoCTJk&callback=initMap')
+		// jquery
+		script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+		script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.min.js')
+		script(src='js/jqrotate.js')
+		// google font
+		link(href='https://fonts.googleapis.com/css?family=Ubuntu:700', rel='stylesheet')
+		// jquery code
+		script(src='js/main.js')
+		script(src='js/menu.js')
