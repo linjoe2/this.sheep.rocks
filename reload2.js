@@ -3,7 +3,7 @@ let dir = require('node-dir');
 let fs = require('fs')
 let totalObject = []
 
-const youtube = new YouTube('AIzaSyD_8UiUE8-eI-zmdkP-x_JN7yUC4pn15rA');
+const youtube = new YouTube('HiddenKey');
 
 
 //empty array's
