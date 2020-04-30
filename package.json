@@ -23,7 +23,7 @@
     "express-device": "^0.4.2",
     "google-maps": "^3.2.1",
     "gray-matter": "^3.1.1",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "marked": "^0.3.6",
     "node-dir": "^0.1.17",
     "node-pandoc": "^0.3.0",
