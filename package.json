@@ -24,7 +24,7 @@
     "google-maps": "^3.2.1",
     "gray-matter": "^3.1.1",
     "jquery": "^3.2.1",
-    "marked": "^0.3.6",
+    "marked": "^0.3.18",
     "node-dir": "^0.1.17",
     "node-pandoc": "^0.3.0",
     "pg": "^6.4.0",
