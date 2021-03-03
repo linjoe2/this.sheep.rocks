@@ -28,7 +28,7 @@
     "node-dir": "^0.1.17",
     "node-pandoc": "^0.3.0",
     "pg": "^6.4.0",
-    "pug": "^2.0.0-rc.2",
+    "pug": "^3.0.1",
     "simple-youtube-api": "^5.0.2"
   }
 }
