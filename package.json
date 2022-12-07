@@ -19,7 +19,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "eslint": "^5.7.0",
-    "express": "^4.15.3",
+    "express": "^4.17.3",
     "express-device": "^0.4.2",
     "google-maps": "^3.2.1",
     "gray-matter": "^3.1.1",
